@@ -12,7 +12,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 
 # 测试类
-class TestBaidu():
+class TestLagou():
     # 在用例执行之前的操作
     def setup_method(self, method):
         self.driver = webdriver.Chrome()
@@ -22,21 +22,27 @@ class TestBaidu():
     def teardown_method(self, method):
         self.driver.quit()
 
-    def test_baidu(self):
+    def test_Lagou(self):
         # 打开一个网页
-        self.driver.get("https://www.baidu.com/")
-        # 设置窗口大小
-        self.driver.set_window_size(1546, 922)
+        self.driver.get("https://www.lagou.com/")
+        # 等待弹出框
+        time.sleep(2)
+        # 点击弹出框的X
+        self.driver.find_element(By.ID, "cboxClose").click()
+        time.sleep(1)
         # 定位一个元素并且 输入操作
-        self.driver.find_element(By.ID, "kw").send_keys("霍格沃兹测试开发")
+        self.driver.find_element(By.ID, "search_input").send_keys("高级测试工程师")
         # 定位一个元素并且点击
-        self.driver.find_element(By.ID, "su").click()
-        self.driver.find_element(By.ID, "su").click()
-        element = self.driver.find_element(By.ID, "su")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
-        element = self.driver.find_element(By.CSS_SELECTOR, "body")
-        actions = ActionChains(self.driver)
-        actions.move_to_element(element).perform()
+        self.driver.find_element(By.ID, "search_button").click()
         time.sleep(20)
+
+
+
+
+
+        # 设置窗口大小
+        #self.driver.set_window_size(1546, 922)
+
+
+
 
